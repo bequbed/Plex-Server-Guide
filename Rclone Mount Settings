@@ -1,0 +1,22 @@
+Here’s a breakdown of what each option does and a few minor adjustments to optimize:
+
+Breakdown of Key Parameters:
+--vfs-cache-mode full: Caches both read and write files, which is ideal for streaming as it helps reduce buffering.
+--vfs-cache-max-size 450G: Uses a large cache size (up to 450GB) on your G drive, which should be sufficient for multiple 4K files, preventing frequent re-downloads.
+--vfs-read-ahead 2G: Pre-loads up to 2GB ahead in each file for smoother playback.
+--vfs-cache-max-age 168h: Keeps cache files for a week, which should work well if you re-watch certain media.
+--buffer-size 1G: Allocates a 1GB buffer per file, further reducing any potential for buffering.
+--dir-cache-time 168h: Caches directory listings for a week, reducing API calls to the OneDrive server for file information.
+--vfs-read-chunk-size 128M: Starts reading files in 128MB chunks, which is suitable for 4K streaming.
+--vfs-read-chunk-size-limit off: Allows chunks to grow without a cap, improving performance as rclone doesn’t have to restart with smaller chunks.
+--attr-timeout 5000h: Caches file attributes for a very long time, reducing metadata requests.
+--poll-interval 0: Disables polling, so rclone won’t actively check for file changes (saving API calls).
+--no-checksum and --no-modtime: Skips checksum and modification time checks, which improves speed but assumes files won’t change frequently on the server.
+--rc and --rc-web-gui: Enables remote control and Web UI for monitoring rclone activity.
+--rc-addr=127.0.0.1:5572: Sets up the remote control interface on localhost at port 5572.
+--cache-dir G:\Rclone\MountCache: Directs the cache to your external SSD (G drive).
+Minor Adjustments for Enhanced Performance and Stability:
+Adjust --poll-interval:
+Setting --poll-interval 0 disables rclone’s ability to detect server-side changes automatically. If you need occasional updates, consider setting this to 15s or 30s instead of 0. This way, you can still benefit from updates without a constant API load.
+Consider Monitoring for SSD Health:
+Since your cache directory is on the external SSD, keep an eye on its health with tools like Samsung Magician to track wear, temperature, and performance.
