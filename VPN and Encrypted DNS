@@ -1,0 +1,95 @@
+
+
+1. VPN (Virtual Private Network):
+
+A VPN encrypts all of your internet traffic (not just DNS requests) and routes it through a secure server. This means your data, including your IP address, browsing activities, and DNS requests, are hidden from your Internet Service Provider (ISP) and other potential eavesdroppers.
+
+The VPN server acts as an intermediary between your device and the internet, masking your IP address with the VPN server’s IP. This increases privacy and can bypass geographic restrictions.
+
+VPNs typically use their own DNS servers to resolve domain names (e.g., turning example.com into an IP address), ensuring that your DNS queries are private and not visible to your ISP.
+
+
+
+2. Encrypted DNS (DNS-over-HTTPS (DoH) or DNS-over-TLS (DoT)):
+
+Normally, DNS requests (which convert domain names to IP addresses) are unencrypted, meaning your ISP or any on-path observer can see which websites you are visiting.
+
+Encrypted DNS protects these requests by encrypting them, typically using DNS-over-HTTPS (DoH) or DNS-over-TLS (DoT). This means that even if someone intercepts your internet traffic, they won’t be able to see your DNS queries.
+
+DNS services like ControlD provide this encrypted DNS resolution, helping hide your DNS queries from prying eyes.
+
+
+
+
+How Encrypted DNS and VPN Interact:
+
+1. When You Use a VPN Alone:
+
+All your internet traffic, including DNS requests, is routed through the VPN server. The VPN provider typically uses its own DNS server to resolve domain names securely. This is why, when connected to a VPN, DNS requests usually go through the VPN’s DNS server by default.
+
+
+
+2. When You Use Encrypted DNS Alone:
+
+Your DNS requests are encrypted, but the rest of your internet traffic (e.g., the actual data you send and receive) remains visible to your ISP. This provides some privacy for your browsing history but does not hide your IP address or encrypt the rest of your traffic.
+
+
+
+3. Using Both VPN and Encrypted DNS Together:
+
+Default Behavior: When you connect to a VPN, the VPN’s DNS server typically overrides your local DNS settings, including any encrypted DNS services you might have configured. This means that all your traffic, including DNS queries, is routed through the VPN for full encryption and privacy.
+
+Bypassing the VPN’s DNS: If you manually configure an encrypted DNS service (e.g., ControlD) on your device while using a VPN, your DNS requests may bypass the VPN’s DNS servers. However, this can cause issues:
+
+Potential DNS Leaks: Your DNS queries might be encrypted, but if they bypass the VPN, they can be traced back to you because they don’t go through the VPN tunnel.
+
+Loss of VPN Benefits for DNS: The VPN won’t be able to manage or protect those DNS requests if they are being routed outside of the VPN tunnel.
+
+
+
+
+
+When to Use Which Configuration:
+
+1. Using Only a VPN (Recommended for Privacy):
+
+If your main goal is privacy and you’re already using a reputable VPN with a strong no-logs policy and secure DNS servers, there’s often no need to separately configure encrypted DNS. The VPN already encrypts all traffic, including DNS queries.
+
+
+
+2. Using Encrypted DNS Without a VPN:
+
+This is useful if you’re not using a VPN but still want to keep your browsing history (via DNS queries) private from your ISP. Encrypted DNS can be set up at the device or router level to protect DNS requests.
+
+
+
+3. Using Both with Care:
+
+If you want to use both an encrypted DNS service (e.g., ControlD) and a VPN, you can, but it’s important to configure it carefully:
+
+You may want to ensure that the DNS service is used within the VPN tunnel to avoid DNS leaks.
+
+Alternatively, configure your VPN client’s split tunneling feature to ensure your desired DNS queries use encrypted DNS while all other traffic remains under the VPN’s protection.
+
+
+
+
+
+Practical Example for Clarity:
+
+VPN Only: You connect to ProtonVPN. All your traffic (web browsing, torrenting, DNS queries) goes through the ProtonVPN server. The DNS queries are resolved by ProtonVPN’s secure DNS servers.
+
+Encrypted DNS Only (No VPN): You set up ControlD as your DNS provider using DNS-over-HTTPS (DoH). Your DNS queries are encrypted and private, but the rest of your traffic (e.g., file downloads, browsing) is still visible to your ISP.
+
+Both Together: You use ProtonVPN but want to use ControlD as your DNS. Your DNS requests can be routed either through the VPN tunnel (preferred for privacy) or bypass the VPN (less private). This configuration needs care to avoid DNS leaks.
+
+
+Bottom Line:
+
+For Privacy: A VPN alone is often sufficient since it encrypts all traffic, including DNS requests. Adding encrypted DNS is a good layer but not always necessary.
+
+DNS Conflicts: If your encrypted DNS and VPN conflict, it can cause internet connectivity issues, as seen when Tailscale DNS overrides your VPN settings. This requires careful configuration of DNS routing rules.
+
+
+Hopefully, this clarifies how the two work together! Let me know if you have more questions or need further examples.
+
