@@ -1,3 +1,10 @@
+Reverse proxy setup to securely access local web server page remotely 
+
+https://www.cloudflare.com/products/tunnel/
+
+Recommend purchasing a domain through Cloudflare directly as they are sold at cost price with no markup and minimal yearly subscription to keep the domain
+
+
 Cloudflare Tunnel (formerly known as Argo Tunnel) is a service that securely connects your applications or services (like a web server, API, or database) to the internet without needing to expose them directly to the outside world. In a nutshell, it creates a secure, outbound-only connection from your server to Cloudflare’s network, so you don’t need to open any inbound ports on your firewall or router. This enhances security, simplifies configuration, and eliminates the need for VPNs or other complex network setups.
 
 Here’s a deep dive into how Cloudflare Tunnel works, its components, and why it’s useful.
