@@ -1,6 +1,10 @@
-Here’s a breakdown of what each option does and a few minor adjustments to optimize:
 
-Breakdown of Key Parameters:
+Recommended Rclone Mount Settings for mounting a Cloud Drive (OneDrive):
+
+mount encrypted_union: O:  --config "C:\Users\Server\AppData\Roaming\rclone\rclone.conf" --vfs-cache-mode full --vfs-cache-max-size 450G --vfs-read-ahead 2G --vfs-cache-max-age 168h --buffer-size 1G --dir-cache-time 168h --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit off --attr-timeout 5000h --poll-interval 0 --cache-dir G:\Rclone\MountCache --log-level ERROR --log-file="C:\rclone\onedrivemcrypt.txt" --user-agent "ISV|rclone.org|rclone/v1.68.1" --no-checksum --no-modtime --rc --rc-web-gui --rc-addr=127.0.0.1:5572 --rc-user=admin --rc-pass=xxxx
+
+Here’s a breakdown of what each option does and a few minor adjustments to optimisation:
+
 --vfs-cache-mode full: Caches both read and write files, which is ideal for streaming as it helps reduce buffering.
 --vfs-cache-max-size 450G: Uses a large cache size (up to 450GB) on your G drive, which should be sufficient for multiple 4K files, preventing frequent re-downloads.
 --vfs-read-ahead 2G: Pre-loads up to 2GB ahead in each file for smoother playback.
