@@ -1,0 +1,58 @@
+Plex Media Server Secure Access Guide
+Overview
+This document outlines best practices and considerations for securely managing a Plex Media Server on a Windows-based system, focusing on leveraging Cloudflare Argo Tunnel and evaluating the necessity of VPN routing.
+
+Why Use Cloudflare Argo Tunnel?
+The Cloudflare Argo Tunnel provides a secure, reliable way to proxy traffic to your Plex server without exposing your real IP address. It acts as a middleman, ensuring all external access routes through Cloudflare, which:
+
+Masks your public IP address.
+Provides TLS encryption for all connections.
+Reduces the complexity of managing port forwarding or firewall rules.
+Do You Need to Route Plex Through a VPN?
+Routing Plex traffic through a VPN is not required if you already have:
+
+Cloudflare Argo Tunnel: Secures external traffic and shields your IP address.
+Secure Connections in Plex: Ensures all client connections are encrypted with TLS.
+When Routing Through a VPN May Be Useful
+Routing Plex through a VPN may be considered in the following cases:
+
+Privacy Concerns with ISP: If you’re concerned about your ISP monitoring or throttling Plex traffic.
+No Cloudflare Tunnel: If you prefer to mask your public IP address with a VPN instead of using Cloudflare.
+Why It’s Typically Redundant
+Cloudflare already handles privacy and encryption.
+VPN routing adds unnecessary complexity (port forwarding, split tunneling, firewall adjustments).
+Performance can be impacted (e.g., latency and bandwidth overhead).
+Recommended Configuration for Secure Plex Access
+1. Cloudflare Argo Tunnel
+Setup: Follow Cloudflare’s official documentation to create an Argo Tunnel for your Plex server.
+Authentication: Optionally restrict access using Cloudflare Access for added security.
+Custom Domain: Configure a subdomain (e.g., plex.mydomain.com) for easy access.
+2. Plex Settings
+Navigate to Settings > Network in the Plex Web App:
+Preferred Network Interface: Leave as "Any" unless explicitly required.
+LAN Networks: Add your local subnet (e.g., 192.168.1.0/24) and any additional networks like Tailscale (e.g., 100.64.0.0/10).
+Preferred Secure Connections: Ensure this is enabled.
+3. VPN Configuration
+If you decide to use a VPN:
+Use split tunneling to exclude Plex traffic from the VPN.
+Configure port forwarding in the VPN to allow remote access.
+Adjust firewall and VPN settings to allow LAN/private traffic.
+4. Remove VPN Complexity
+If using Cloudflare Argo Tunnel:
+Remove Plex from VPN routing entirely to avoid conflicts.
+Focus on securing the tunnel (e.g., by enforcing authenticated access).
+Example Plex Network Configuration
+Setting	Value
+Preferred Network Interface	Any
+LAN Networks	192.168.1.0/24, 100.64.0.0/10
+Secure Connections	Preferred
+Troubleshooting
+Common Issues
+Plex Not Accessible Externally:
+Ensure Cloudflare Argo Tunnel is active and correctly configured.
+Verify the custom domain is resolving to the correct tunnel endpoint.
+Network Performance Issues:
+Avoid routing Plex through the VPN unnecessarily.
+Use LAN and private network exceptions in VPN and firewall settings.
+Conclusion
+For most setups, Cloudflare Argo Tunnel combined with Plex’s built-in secure connection settings offers the best balance of simplicity, performance, and security. Routing Plex through a VPN is optional and usually unnecessary if these tools are configured correctly.
