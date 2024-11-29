@@ -1,0 +1,103 @@
+Unified Storage Solution: NAS Drives with StableBit CloudDrive and Windows Storage Spaces
+This guide describes how I combined two NAS drives into a single virtual drive visible on Windows 11. The solution uses StableBit CloudDrive to convert NAS shares into local drives and Windows Storage Spaces to create a unified storage pool. This setup is scalable, non-destructive, and integrates seamlessly with Windows.
+
+Overview
+The goal was to:
+
+Combine two NAS drives (each 18TB) into a single virtual drive.
+Preserve the data on the existing drive without reformatting.
+Ensure the combined drive is visible and usable in Windows for applications like Plex and qBittorrent.
+The chosen solution:
+
+StableBit CloudDrive: Virtualizes NAS shares into local drives that are compatible with Windows tools.
+Windows Storage Spaces: Combines the local drives into a single virtual volume.
+Benefits
+Non-Destructive: Existing data is preserved.
+Scalable: Easily add more NAS drives in the future.
+Windows Integration: The final virtual drive works natively with Windows, including applications like Plex and torrent clients.
+Setup Instructions
+Step 1: Configure StableBit CloudDrive
+Download and Install StableBit CloudDrive:
+
+StableBit CloudDrive provides a user-friendly GUI to create virtual drives.
+Install and open the software on your Windows machine.
+Add NAS Drives to StableBit CloudDrive:
+
+Navigate to Add New Drive in CloudDrive.
+Select the File Share provider.
+For the NAS shares:
+Add \\192.168.1.29\nas4 for the first drive.
+Add \\192.168.1.29\nas-35 for the second drive.
+Assign a drive letter to each virtual drive created by CloudDrive (e.g., L: for nas4 and M: for nas-35).
+Verify Drive Creation:
+
+Ensure both NAS shares are now visible as local drives in File Explorer.
+Step 2: Create a Storage Pool Using Windows Storage Spaces
+Open Windows Storage Spaces:
+
+Go to Control Panel → System and Security → Storage Spaces.
+Select Create a new pool and storage space.
+Add the Virtual Drives:
+
+Select the virtual drives created by StableBit CloudDrive (L: and M:).
+These drives should appear as available drives in the Storage Spaces interface.
+Choose Pool Settings:
+
+For the storage layout, choose:
+Simple (No Redundancy): Combines the drives into one logical volume with full capacity (36TB total in this case).
+Configure the pool size (e.g., 36TB).
+Click Create Pool.
+Initialize and Format the Pool:
+
+Assign a drive letter to the storage space (e.g., X:).
+Format it as NTFS.
+Step 3: Verify and Use the Unified Drive
+Open File Explorer to ensure the new virtual drive (X:) is visible.
+Use this unified drive for:
+Plex: Point your Plex Media Server to X: for media storage.
+qBittorrent: Use X: as the default download directory.
+How It Works
+StableBit CloudDrive
+Purpose: Converts network shares (NAS drives) into local drives that Windows recognizes.
+Process: Maps the NAS shares (\\192.168.1.29\nas4 and \\192.168.1.29\nas-35) as virtual local drives (e.g., L: and M:).
+Windows Storage Spaces
+Purpose: Combines multiple drives into a single virtual volume.
+Process:
+Takes the virtual drives created by StableBit CloudDrive.
+Creates a single storage pool (X:) using a "Simple (No Redundancy)" layout for maximum capacity.
+Scalability
+To add more drives:
+
+Add the new NAS drive in StableBit CloudDrive.
+Add the new virtual drive to the existing Storage Pool in Windows Storage Spaces.
+Performance Considerations
+Network Speed:
+
+Ensure your NAS and Windows machine are connected via a high-speed gigabit or 10GbE network to avoid bottlenecks.
+Plex and Streaming:
+
+Plex may scan large libraries stored on the unified drive, so optimize your Plex server for metadata caching and indexing.
+Backup Strategy:
+
+This setup does not provide redundancy. Regularly back up critical data to another location (e.g., external drives or cloud storage).
+Troubleshooting
+Virtual Drives Not Detected in Storage Spaces:
+
+Ensure StableBit CloudDrive is running and that the drives are mounted as local drives.
+Restart the Storage Spaces service or reboot your system.
+Performance Issues:
+
+Check network bandwidth and disk health on your NAS.
+Optimize StableBit CloudDrive’s cache settings for better performance.
+Data Loss Risk:
+
+Before modifying any drives, always back up your data to avoid accidental data loss.
+Future Improvements
+Explore RAID or parity configurations in Storage Spaces for redundancy.
+Consider migrating to a hardware RAID solution if redundancy is a priority.
+Monitor performance and consider upgrading to a faster NAS or storage solution if needed.
+
+References
+StableBit CloudDrive Documentation
+Windows Storage Spaces Guide
+Plex Server Optimization
