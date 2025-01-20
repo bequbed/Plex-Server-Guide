@@ -1,0 +1,185 @@
+# TeslaMate Deployment with Docker on Windows (Access via Tailscale and NPM)
+
+## Overview 🎉🎯✨
+This document serves as a comprehensive guide to the setup and deployment of TeslaMate on a Windows-based Plex server running Docker. The setup includes remote access via Tailscale and a reverse proxy managed by Nginx Proxy Manager (NPM). 🎉🎯✨
+
+---
+
+## Key Achievements 🎉🎯✨
+
+1. **TeslaMate Deployment on Docker (Windows)**:
+   - TeslaMate is fully operational on the Windows Plex server using Docker.
+   - Historical data from Oracle Cloud has been successfully restored. 🎉
+
+2. **Remote Access via Tailscale**:
+   - The Windows server is part of a Tailscale mesh VPN, allowing secure remote access. 🌐
+
+3. **Reverse Proxy with Nginx Proxy Manager (NPM)**:
+   - The remote server is using NPM to provide secure and user-friendly domain-based access to TeslaMate. 🛡️
+
+4. **Database Migration**:
+   - PostgreSQL database backup from the Oracle Cloud instance was restored to the Windows setup. 💾
+
+---
+
+## System Details 🌟🎯✨
+
+### Windows Plex Server:
+- **OS**: Windows 10/11
+- **Primary Use**: Plex Media Server
+- **Secondary Use**: TeslaMate running in Docker 🎬
+
+### Tools and Technologies:
+- **Docker Desktop** (Windows): Used for running TeslaMate containers. 🐳
+- **Tailscale**: Provides secure VPN-based access. 🔒
+- **Nginx Proxy Manager (NPM)**: Simplifies reverse proxy setup and SSL management. 🌐
+- **TeslaMate**: Tracks Tesla vehicle data. 🚗
+- **PostgreSQL**: Database for TeslaMate. 📊
+
+---
+
+## Setup Steps 🛠️🎯✨
+
+### 1. **Install Docker Desktop** 🎉
+1. Download Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop). 🐳
+2. Ensure WSL 2 (Windows Subsystem for Linux) is enabled.
+3. Verify Docker installation:
+   ```bash
+   docker --version
+   ```
+
+### 2. **Deploy TeslaMate on Docker** 🎯✨
+1. Create a working directory for TeslaMate:
+   ```powershell
+   mkdir C:\teslamate
+   cd C:\teslamate
+   ```
+2. Create a `docker-compose.yml` file:
+   ```yaml
+   version: '3.3'
+
+   services:
+     teslamate:
+       image: teslamate/teslamate:latest
+       container_name: teslamate
+       environment:
+         - DATABASE_USER=teslamate
+         - DATABASE_PASS=secret
+         - DATABASE_NAME=teslamate
+         - DATABASE_HOST=database
+         - MQTT_HOST=mosquitto
+         - TZ=Your/Timezone
+       ports:
+         - "4000:4000"
+       depends_on:
+         - database
+         - mosquitto
+       restart: always
+
+     database:
+       image: postgres:15
+       container_name: teslamate-database
+       environment:
+         - POSTGRES_USER=teslamate
+         - POSTGRES_PASSWORD=secret
+         - POSTGRES_DB=teslamate
+       volumes:
+         - teslamate-db:/var/lib/postgresql/data
+       restart: always
+
+     mosquitto:
+       image: eclipse-mosquitto:2
+       container_name: teslamate-mosquitto
+       restart: always
+
+     grafana:
+       image: teslamate/grafana:latest
+       container_name: teslamate-grafana
+       environment:
+         - DATABASE_USER=teslamate
+         - DATABASE_PASS=secret
+         - DATABASE_NAME=teslamate
+         - DATABASE_HOST=database
+         - TZ=Your/Timezone
+       ports:
+         - "3000:3000"
+       restart: always
+
+   volumes:
+     teslamate-db:
+   ```
+3. Start the TeslaMate stack:
+   ```powershell
+   docker-compose up -d
+   ``` 🎉
+
+### 3. **Backup and Restore Database** 🎯✨
+1. Backup TeslaMate database on the Oracle Cloud server:
+   ```bash
+   sudo docker exec -t teslamate-database-1 pg_dump -U teslamate teslamate > teslamate_backup.sql
+   ```
+2. Transfer the backup to the Windows server using `scp`:
+   ```bash
+   scp user@oracle-cloud:/path/to/teslamate_backup.sql C:\teslamate
+   ```
+3. Restore the database on Windows:
+   ```powershell
+   type teslamate_backup.sql | docker exec -i teslamate-database psql -U teslamate teslamate
+   ``` 🎉
+
+### 4. **Set Up Tailscale** 🌐🎉✨
+1. Install Tailscale on the Plex server and the remote server.
+2. Authenticate the devices to join the same Tailscale network. 🔒
+3. Verify connectivity using:
+   ```bash
+   tailscale status
+   ``` 🎉
+
+### 5. **Configure Nginx Proxy Manager** 🛡️🎯✨
+1. Deploy NPM on the remote server.
+2. Add a proxy host in NPM for TeslaMate:
+   - **Domain Name**: `teslamate.example.com`
+   - **Forward Hostname/IP**: Local Tailscale IP of the Plex server.
+   - **Forward Port**: `4000`
+   - Enable **Websockets Support**. 🔗
+3. Secure the connection with an SSL certificate (e.g., Let's Encrypt). 🔒
+
+---
+
+## Access Details 🌐🎯✨
+
+- **TeslaMate**: `http://teslamate.example.com` (via NPM) 🎉
+- **Grafana**: `http://teslamate.example.com:3000` 🎯
+- **Local Access**: `http://<local-ip>:4000` ✨
+
+---
+
+## Maintenance 🛠️🎯✨
+
+### Backup TeslaMate Database 🎉
+Run this command on the Windows server:
+```powershell
+docker exec -t teslamate-database pg_dump -U teslamate teslamate > C:\teslamate\teslamate_backup_$(Get-Date -Format yyyy-MM-dd).sql
+```
+
+### Monitor Docker Containers 🌟
+List running containers:
+```powershell
+docker ps
+```
+
+Restart TeslaMate:
+```powershell
+docker-compose restart teslamate
+```
+
+---
+
+## Future Improvements 🌟🎉✨
+- Automate backups using Task Scheduler. 🎯
+- Integrate TeslaMate data into external dashboards. 📊
+
+---
+
+This setup ensures TeslaMate is accessible securely and efficiently via a combination of Tailscale and NPM, with local and remote access options. 🎉✨🎯
+
