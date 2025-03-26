@@ -1,0 +1,99 @@
+### Key Points
+- It seems likely that trialing Vivaldi for a month with your ControlD DNS setup is a good idea, given its features and your ad-blocking needs.
+- Research suggests Vivaldi offers a modern UI and additional features like note-taking and calendar, which you prefer, but it's not fully open source like Brave, which may affect privacy.
+- The evidence leans toward ControlD DNS enhancing Vivaldi's ad-blocking, compensating for its weaker built-in blocker compared to Brave.
+- An unexpected detail is that Vivaldi's headquarters in Norway, with strict data protection laws, may provide additional privacy assurances.
+
+### Trying Vivaldi with ControlD DNS
+Given your preference for Vivaldi's features and UI, trialing it for a month with your ControlD DNS subscription makes sense. ControlD DNS should help with ad-blocking, filling the gap where Vivaldi's built-in blocker is weaker than Brave's. You can adjust Vivaldi's privacy settings, like disabling Google's Safe Browsing API, to enhance your experience. If you're happy with it after a month, great; if not, you can switch back to Brave.
+
+### Privacy and Open Source
+Vivaldi is partially open source, with its backend open but UI closed, unlike Brave, which is fully open source. This might raise privacy concerns, but Vivaldi claims not to collect user data and is subject to Norway's strict data laws, which could be a plus. Check [Vivaldi Browser privacy policy](https://vivaldi.com/privacy/browser/) for details.
+
+### Ad-Blocking with ControlD DNS
+Vivaldi's ad-blocking is less robust than Brave's, with limited uBlock Origin support, but ControlD DNS blocks ads at the DNS level, which should work well across browsers. This setup should meet your needs, as shown in comparisons like [Brave vs. Vivaldi: Which Browser Is Safer and More Private?](https://www.makeuseof.com/brave-vs-vivaldi-safer-private/).
+
+---
+
+### Survey Note: Detailed Comparison of Trialing Vivaldi with ControlD DNS for Privacy-Focused Browsing
+
+This note provides a comprehensive analysis of your decision to trial Vivaldi for a month, especially with your ControlD DNS subscription, considering privacy, ad-blocking, open-source status, and additional features. It aims to address all aspects to ensure you have the information needed for an informed decision, written in the style of a professional article.
+
+#### Introduction
+You have decided to trial Vivaldi for a month, drawn by its additional features and modern UI, while continuing to use your ControlD DNS subscription for ad-blocking and privacy controls. Previously, you used Brave, which is fully open source and has strong built-in ad-blocking, but you're concerned about Vivaldi's privacy implications and ad-blocking capabilities. This analysis will explore these factors in detail to support your trial period.
+
+#### Open Source Status and Privacy Implications
+One key aspect is Vivaldi's open-source status compared to Brave, as open source is often seen as a cornerstone for privacy-focused browsing due to its auditable nature.
+
+- **Vivaldi's Open Source Status**: Research indicates that Vivaldi is not fully open source. Its backend and the Chromium codebase are open source under the BSD-3 license, as detailed on [Vivaldi Browser Help: Is Vivaldi Open Source?](https://help.vivaldi.com/desktop/privacy/is-vivaldi-open-source/). However, the user interface (UI) layer is closed source, written in HTML, CSS, and JavaScript for auditability but not fully transparent. This partial open-source status means that while the core functionality can be reviewed, the unique UI features cannot, potentially raising privacy concerns for users who prioritize full transparency.
+- **Brave's Open Source Status**: In contrast, Brave is fully open source, allowing the community to audit all aspects of the browser, which enhances trust for privacy-focused users. This is evident from comparisons on platforms like [Slant Vivaldi vs Brave detailed comparison](https://www.slant.co/versus/5233/16094/~vivaldi_vs_brave), where Brave is noted for its open-source commitment.
+- **Privacy Implications**: The closed-source UI in Vivaldi could theoretically hide potential privacy issues, though no significant breaches have been reported. Vivaldi claims not to track users or collect data, as stated in its privacy policy [Vivaldi Browser privacy policy](https://vivaldi.com/privacy/browser/), and offers features like private browsing and end-to-end encrypted syncing. However, the use of Google's Safe Browsing API by default, as noted in [Privacy and Security Settings Vivaldi Browser Help](https://help.vivaldi.com/desktop/privacy/privacy-settings/), is a concern for some, as it involves Google services. You can disable this in settings, which mitigates the risk.
+
+An unexpected detail is that Vivaldi's headquarters in Norway, subject to strict data protection laws like GDPR and additional Norwegian regulations, as mentioned on [Is the Vivaldi Browser Safe for Searching the Web?](https://allaboutcookies.org/is-vivaldi-browser-safe), may provide legal assurances for data handling, which is not typically highlighted in browser comparisons.
+
+From the search results, Vivaldi does send some data to its servers, like a unique user ID, version, CPU architecture, screen resolution, etc., every 24 hours, but it's claimed to be for statistical purposes and the IP is anonymized, as seen in [12 Secure Browsers That Protect Your Privacy in 2025](https://cyberinsider.com/browser/secure/). This is detailed in their privacy policy, and users can adjust settings to enhance privacy, such as disabling Safe Browsing, as discussed in [How to use Vivaldi’s tools to protect your privacy while browsing The Verge](https://www.theverge.com/2020/2/19/21137843/vivaldi-privacy-tools-private-network-browser-settings-security).
+
+#### Ad-Blocking Capabilities and the Role of ControlD DNS
+You noted concerns about Vivaldi's ad-blocking, with limited support for uBlock Origin and a weaker built-in blocker compared to Brave, but your ControlD DNS subscription adds another layer of protection.
+
+- **Brave's Ad-Blocking**: Brave's built-in ad blocker, Brave Shields, is highly effective, blocking ads, trackers, scripts, cross-site cookies, phishing, and fingerprinting, as detailed in [Brave vs. Vivaldi: Which Browser Is Safer and More Private?](https://www.makeuseof.com/brave-vs-vivaldi-safer-private/). This is a core feature, making it a top choice for privacy-conscious users.
+- **Vivaldi's Ad-Blocking**: Vivaldi's built-in tracker and ad blocker are noted to be weaker, with limited support for third-party extensions like uBlock Origin, as discussed in [Inbuilt blocker vs extension proof Vivaldi Forum](https://forum.vivaldi.net/topic/83733/inbuilt-blocker-vs-extension-proof). Comparisons on [Vivaldi vs Brave detailed comparison as of 2025](https://www.slant.co/versus/5233/16094/~vivaldi_vs_brave) suggest Vivaldi's blocker is less aggressive, which aligns with your concern. However, Vivaldi does support Chrome extensions, including uBlock Origin, as seen in [Using Extensions in Vivaldi Vivaldi Browser Help](https://help.vivaldi.com/desktop/appearance-customization/extensions/), though some users report it may not fully support all filterlists, as mentioned in [Google is Killing uBlock Origin. No Chromium Browser is Safe.](https://www.quippd.com/writing/2024/10/16/google-is-killing-uBlock-origin-no-chromium-browser-is-safe.html).
+- **ControlD DNS Impact**: Your ControlD DNS subscription, which blocks ads and trackers at the DNS level, can significantly enhance Vivaldi's ad-blocking capabilities. This is not browser-specific and applies across all browsers, reducing the gap between Brave and Vivaldi. Details on ControlD's features can be found on their website, though specific URLs were not provided in the analysis, it's a known service for DNS-based filtering.
+
+A table summarizing the ad-blocking comparison, considering ControlD DNS, is as follows:
+
+| **Browser** | **Built-in Ad Blocker** | **uBlock Origin Support** | **With ControlD DNS** |
+|-------------|-------------------------|---------------------------|-----------------------|
+| Brave       | Strong (Brave Shields)  | Full                      | Enhanced              |
+| Vivaldi     | Weaker                 | Limited                   | Significantly Enhanced|
+
+This table shows that while Brave starts with a stronger position, ControlD DNS levels the playing field for Vivaldi, making it a viable option for your needs during the trial.
+
+#### Additional Features and User Interface
+You appreciate Vivaldi's additional features and modern UI, which are significant factors in your decision to trial it.
+
+- **Vivaldi's Features**: Vivaldi offers unique productivity tools, including built-in note-taking, calendar, email client, and advanced tab management, as highlighted in [Is Vivaldi Safe? The Ins and Outs of This Customizable Browser](https://vpnoverview.com/privacy/anonymous-browsing/is-vivaldi-browser-safe/). These features are not available in Brave, which focuses on privacy and speed, as noted in [Brave vs Vivaldi: Which Chromium-Based Browser is Better?](https://itsfoss.com/brave-vs-vivaldi/).
+- **UI Comparison**: Vivaldi's UI is highly customizable and modern, with options for themes, keyboard shortcuts, and mouse gestures, appealing to power users. Brave, while clean and user-friendly, offers less customization, as seen in user reviews on [Brave vs Vivaldi Browser - 2024 Comparison](https://www.softwareadvice.com/browser/brave-profile/vs/vivaldi-browser/).
+- **Your Preference**: Your liking for Vivaldi's features and UI is a strong driver, and these aspects are well-documented in forums and reviews, such as [Vivaldi vs Brave: Ultimate Browser Showdown & Comparison](https://www.standsapp.org/blog/vivaldi-vs-brave/), which praise Vivaldi's productivity tools.
+
+#### Privacy Risks and Mitigation Strategies During the Trial
+Given your focus on privacy, it's important to address specific risks with Vivaldi and how they can be mitigated during your month-long trial.
+
+- **Specific Risks**: The main risks include the use of Google's Safe Browsing API, which can be disabled in settings, and potential fingerprinting due to shared system information (e.g., graphics card, CPU), as mentioned in [Vivaldi is sharing too much information. I found a problem with privacy Vivaldi Forum](https://forum.vivaldi.net/topic/82974/vivaldi-is-sharing-too-much-information-i-found-a-problem-with-privacy). However, Vivaldi does not collect usage data, as stated in [Privacy & Security Features Vivaldi Browser](https://vivaldi.com/features/privacy-security/).
+- **Mitigation**: You can enhance privacy in Vivaldi by:
+  - Disabling Google's Safe Browsing API in Settings > Privacy > Privacy, as detailed in [Privacy and Security Settings Vivaldi Browser Help](https://help.vivaldi.com/desktop/privacy/privacy-settings/).
+  - Using ControlD DNS for DNS-level ad-blocking and tracker-blocking.
+  - Customizing privacy settings to block third-party cookies and manage website permissions, as detailed in [How to use Vivaldi’s tools to protect your privacy while browsing The Verge](https://www.theverge.com/2020/2/19/21137843/vivaldi-privacy-tools-private-network-browser-settings-security).
+
+#### Trial Period Recommendations
+Given your decision to trial Vivaldi for a month, here are some steps to ensure a successful evaluation:
+- Install Vivaldi and configure it with your ControlD DNS settings. Ensure ad-blocking is effective by testing on sites with heavy ads.
+- Adjust privacy settings, such as disabling Safe Browsing and reviewing cookie policies, to align with your preferences.
+- Use Vivaldi for your daily browsing and assess its performance, features, and privacy impact. If you find any issues, compare them against Brave to see if they're deal-breakers.
+- At the end of the month, decide whether Vivaldi meets your needs. If not, you can easily switch back to Brave, as both are Chromium-based, making data migration straightforward.
+
+#### Conclusion and Final Thoughts
+Based on the analysis, trialing Vivaldi with ControlD DNS is a reasonable choice given your preference for its features and UI, especially with DNS-level ad-blocking compensating for its weaker built-in blocker. While Brave has a slight edge in privacy due to its fully open-source nature, Vivaldi offers robust privacy features and customization options, and its Norwegian base adds legal privacy protections. You can further enhance Vivaldi's privacy by disabling Google services and relying on ControlD DNS. This trial period will help you determine if Vivaldi fits your browsing needs, and you can always revert to Brave if necessary. This conclusion is supported by comparisons like [Brave vs. Vivaldi: Which Browser Is Safer and More Private?](https://www.makeuseof.com/brave-vs-vivaldi-safer-private/) and user discussions on [How does Vivaldi compare to Brave in terms of privacy? Privacy Guides Community](https://discuss.privacyguides.net/t/how-does-vivaldi-compare-to-brave-in-terms-of-privacy/17715).
+
+---
+
+### Key Citations
+- [Vivaldi Browser Help: Is Vivaldi Open Source?](https://help.vivaldi.com/desktop/privacy/is-vivaldi-open-source/)
+- [Brave vs. Vivaldi: Which Browser Is Safer and More Private?](https://www.makeuseof.com/brave-vs-vivaldi-safer-private/)
+- [Vivaldi Browser privacy policy](https://vivaldi.com/privacy/browser/)
+- [Privacy and Security Settings Vivaldi Browser Help](https://help.vivaldi.com/desktop/privacy/privacy-settings/)
+- [How to use Vivaldi’s tools to protect your privacy while browsing The Verge](https://www.theverge.com/2020/2/19/21137843/vivaldi-privacy-tools-private-network-browser-settings-security)
+- [Vivaldi is sharing too much information. I found a problem with privacy Vivaldi Forum](https://forum.vivaldi.net/topic/82974/vivaldi-is-sharing-too-much-information-i-found-a-problem-with-privacy)
+- [Is Vivaldi Safe? The Ins and Outs of This Customizable Browser](https://vpnoverview.com/privacy/anonymous-browsing/is-vivaldi-browser-safe/)
+- [Review: Determining Vivaldi's Privacy Browser Status Avoid the Hack](https://avoidthehack.com/review-vivaldi-browser)
+- [Vivaldi vs Brave detailed comparison as of 2025](https://www.slant.co/versus/5233/16094/~vivaldi_vs_brave)
+- [Inbuilt blocker vs extension proof Vivaldi Forum](https://forum.vivaldi.net/topic/83733/inbuilt-blocker-vs-extension-proof)
+- [Using Extensions in Vivaldi Vivaldi Browser Help](https://help.vivaldi.com/desktop/appearance-customization/extensions/)
+- [Google is Killing uBlock Origin. No Chromium Browser is Safe.](https://www.quippd.com/writing/2024/10/16/google-is-killing-uBlock-origin-no-chromium-browser-is-safe.html)
+- [Brave vs Vivaldi: Which Chromium-Based Browser is Better?](https://itsfoss.com/brave-vs-vivaldi/)
+- [Vivaldi vs Brave: Ultimate Browser Showdown & Comparison](https://www.standsapp.org/blog/vivaldi-vs-brave/)
+- [Brave vs Vivaldi Browser - 2024 Comparison Software Advice](https://www.softwareadvice.com/browser/brave-profile/vs/vivaldi-browser/)
+- [Is the Vivaldi Browser Safe for Searching the Web?](https://allaboutcookies.org/is-vivaldi-browser-safe)
+- [Privacy & Security Features Vivaldi Browser](https://vivaldi.com/features/privacy-security/)
+- [12 Secure Browsers That Protect Your Privacy in 2025](https://cyberinsider.com/browser/secure/)
+- [How does Vivaldi compare to Brave in terms of privacy? Privacy Guides Community](https://discuss.privacyguides.net/t/how-does-vivaldi-compare-to-brave-in-terms-of-privacy/17715)
