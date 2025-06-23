@@ -1,0 +1,141 @@
+Here are both versions for your records:
+
+---
+
+## **1. Markdown Version (`oracle-plex-remote-access.md`)**
+
+````markdown
+# Plex Remote Access on Oracle Cloud Free Tier (Ubuntu ARM) – Proven Guide
+
+## 1. Install Plex Natively (No Docker)
+```bash
+sudo dpkg -i plexmediaserver_<version>_arm64.deb
+````
+
+## 2. Open Oracle Cloud Security Rules
+
+* **Ingress:** TCP 32400 from 0.0.0.0/0 (all)
+* **Egress:** Allow all
+* **Confirm** Oracle instance has a **public IP**
+
+## 3. Clean System (if previously used Docker)
+
+```bash
+docker ps
+docker stop <container>
+docker rm <container>
+```
+
+## 4. Flush Firewall and Disable UFW
+
+```bash
+sudo iptables -t nat -F
+sudo iptables -t filter -F
+sudo ufw disable
+```
+
+## 5. Manually Set Plex to Use Public IP
+
+Edit the Preferences file:
+
+```bash
+sudo nano "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Preferences.xml"
+```
+
+Insert or update in the tag:
+
+```xml
+manualPortMappingMode="1" manualPortMappingPort="32400" InternetAddress="YOUR.PUBLIC.IP"
+```
+
+## 6. Restart Plex
+
+```bash
+sudo systemctl restart plexmediaserver
+```
+
+## 7. Access Plex Web & Enable Remote Access
+
+* `http://127.0.0.1:32400/web` (via SSH or Tailscale)
+* Settings > Remote Access > Retry
+
+## 8. Confirm
+
+* Green “Fully accessible outside your network” appears
+* Server now available on all Plex apps (web, app.plex.tv, mobile, TV)
+
+## 9. (Optional) Re-enable UFW with Plex Rule
+
+```bash
+sudo ufw allow 32400/tcp
+sudo ufw enable
+```
+
+---
+
+**If remote access ever fails:**
+
+* Repeat Steps 4–7.
+* Double-check Oracle Security List rules.
+* Confirm Preferences.xml has the current public IP.
+
+```
+
+---
+
+## **2. Plain Text Version (`oracle-plex-remote-access.txt`)**
+
+```
+
+Plex Remote Access on Oracle Cloud Free Tier (Ubuntu ARM)
+
+1. Install Plex Natively (Not Docker):
+   sudo dpkg -i plexmediaserver\_<version>\_arm64.deb
+
+2. Configure Oracle Security List:
+
+   * Ingress: allow TCP 32400 from 0.0.0.0/0
+   * Egress: allow all
+   * Confirm public IP is assigned
+
+3. If Docker was previously used, remove old containers:
+   docker ps
+   docker stop <container>
+   docker rm <container>
+
+4. Flush iptables and disable UFW:
+   sudo iptables -t nat -F
+   sudo iptables -t filter -F
+   sudo ufw disable
+
+5. Edit Preferences.xml to set public IP:
+   sudo nano "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Preferences.xml"
+   (Add/update:)
+   manualPortMappingMode="1" manualPortMappingPort="32400" InternetAddress="YOUR.PUBLIC.IP"
+
+6. Restart Plex:
+   sudo systemctl restart plexmediaserver
+
+7. Access Plex Web UI locally:
+   [http://127.0.0.1:32400/web](http://127.0.0.1:32400/web)
+
+   * Go to Settings > Remote Access > Retry
+
+8. Confirm:
+
+   * Remote access is now green (“Fully accessible outside your network”)
+   * Plex is visible everywhere (web, mobile, TV, app.plex.tv)
+
+9. (Optional) Re-enable UFW with Plex port open:
+   sudo ufw allow 32400/tcp
+   sudo ufw enable
+
+If remote access fails in the future, repeat steps 4–7 and verify Oracle Cloud firewall rules.
+
+```
+
+---
+
+**You can copy/paste either to your notes or server.**  
+If you need a downloadable file or further customizations (e.g., for other distros or Docker scenarios), just ask!
+```
